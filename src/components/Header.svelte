@@ -2,12 +2,8 @@
 
 </script>
 
-<div>
+<div class="bg-red-300">
     <span>This is header</span>
 </div>
 
 
-
-<style>
-
-</style>

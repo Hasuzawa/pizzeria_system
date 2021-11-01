@@ -2,10 +2,7 @@
 
 </script>
 
-<footer class="footer">
+<footer class="footer bg-blue-300">
     <span>This is footer</span>
 </footer>
 
-<style>
-
-</style>
