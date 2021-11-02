@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# by default, paths start at the project root (outer backend for this project), or refer to it explicity with "django_root"
+# the first schema is filename, the inner schema is a python object
+GRAPHENE = {
+    "SCHEMA": "pizzeria.graphene_django.schema.schema"
+}

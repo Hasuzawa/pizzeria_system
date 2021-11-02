@@ -38,6 +38,10 @@ class Seasoning(TimestampBase):
         return self.name
 
 
+class Pizza(TimestampBase):
+    pass
+
+
 class Order(TimestampBase):
     shape = ForeignKey(Shape, null=True, on_delete=SET_NULL)
     sauce = ForeignKey(Sauce, null=True, on_delete=SET_NULL)

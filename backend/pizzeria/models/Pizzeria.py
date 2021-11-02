@@ -12,3 +12,5 @@ class Pizzeria(Singleton):
     min_seasoning = IntegerField(default=0)
     max_seasoning = IntegerField(default=None)
 
+    def __str__(self):
+        return "settings for order"
