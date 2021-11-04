@@ -1,0 +1,13 @@
+
+
+query GET_ALL_SHAPES {
+    allShapes {
+        name: String!
+    }
+}
+
+query GET_ALL_SAUCES {
+    allSauces {
+        name: String!
+    }
+}

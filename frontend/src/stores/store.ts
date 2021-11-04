@@ -2,7 +2,7 @@ import { writable } from "svelte/store"
 
 export const shape = writable<string>("round");
 
-export const sauce = writable<string>("");
+export const sauce = writable<string>("tomato");
 
 export const toppings = writable<string[]>([]);
 

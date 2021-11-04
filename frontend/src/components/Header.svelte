@@ -5,7 +5,7 @@
 
 <div id="header" class="flex justify-center justify-items-stretch">
     <div id="bound" class="max-w-screen-lg h-12">
-        <span>This is header</span>
+        <span>Pizzeria</span>
         <span>Shape: {$shape}</span>
         <span>Sauce: {$sauce}</span>
         <span>{$toppings.length} Toppings</span>

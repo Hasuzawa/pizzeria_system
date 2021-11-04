@@ -61,5 +61,9 @@ This account cannot modify anything, not even making an order.
         <li>
             I deleted some migration and cache and now django does not know the state of the database. I fixed it by manually filter out tables django need to add and tables that already exist. I guess Django want total control over the database and circumventing it will end badly.
         </li>
+        <li>
+            Installed Apollo Client for Svelte and configured Vite. I am starting to think that GraphQL should not need to
+            be manullay configured, considering how popular it is.
+        </li>
     </ul>
 </details>
