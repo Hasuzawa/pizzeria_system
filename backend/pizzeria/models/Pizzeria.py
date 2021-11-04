@@ -1,12 +1,12 @@
 from django.db import models
 from django.db.models import (Model, CharField, TextField, IntegerField, DateTimeField, ForeignKey, ManyToManyField,
     SET_NULL, )
-from .Base import Singleton
+#from .Base import SingletonModel
 
 
 # The usage of IntegerField instead of PositiveIntegerField is intentional
 
-class Pizzeria(Singleton):
+class Pizzeria(Model):
     min_topping = IntegerField(default=3)
     max_topping = IntegerField(default=10)
     min_seasoning = IntegerField(default=0)

@@ -1,2 +1,2 @@
-from .Pizza import Order, Shape, Sauce, Topping, Seasoning
+from .Pizza import Shape, Sauce, Topping, Seasoning, Pizza, Order
 from .Pizzeria import Pizzeria

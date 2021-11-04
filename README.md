@@ -56,7 +56,10 @@ This account cannot modify anything, not even making an order.
             Graphene-django framework for GraphQL API. There is now layer upon layer of abstraction. The django model is an abstraction over database. The graphene schema is an abstraction over django model. But at least these two are necessary. The first allows construction of database without dependence on the specific database (MySQL, PostgreSQL, SQLite etc.). The second allows us to selectively expose some field that will participate in API processes.
         </li>
         <li>
-            (placeholder)
+            When modelling database, instead of trying to mimic real-world behaviour, it might be better to design it such that it behaves how you want. In other words, keep some distance between real world and the database. Trying to establish a one-to-one correspondence between database and real world most often result in squaring a circle.
+        </li>
+        <li>
+            I deleted some migration and cache and now django does not know the state of the database. I fixed it by manually filter out tables django need to add and tables that already exist. I guess Django want total control over the database and circumventing it will end badly.
         </li>
     </ul>
 </details>

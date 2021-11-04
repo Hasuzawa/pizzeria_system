@@ -1,7 +1,9 @@
 from django.db import models
 from django.db.models import (Model, CharField, TextField, IntegerField, DateTimeField, ForeignKey, ManyToManyField,
     SET_NULL)
+from django.db.models.deletion import CASCADE, PROTECT
 from .Base import TimestampBase
+
 
 # django's object relational mapping allows to create table, SQL query etc without dependence on the database.
 # i.e. this is database-independent SQL
@@ -39,17 +41,25 @@ class Seasoning(TimestampBase):
 
 
 class Pizza(TimestampBase):
-    pass
+    #name = CharField(max_length=255, null=True)
+    #price = IntegerField()
 
-
-class Order(TimestampBase):
-    shape = ForeignKey(Shape, null=True, on_delete=SET_NULL)
-    sauce = ForeignKey(Sauce, null=True, on_delete=SET_NULL)
+    shape = ForeignKey(Shape, null=True, on_delete=PROTECT)
+    sauce = ForeignKey(Sauce, null=True, on_delete=PROTECT)
     toppings = ManyToManyField(Topping)
     seasonings = ManyToManyField(Seasoning)
 
-    price = IntegerField()  #derived field
 
     def __str__(self):
         return "{} {} pizza with {} topping and {} seasoning".format(
             self.shape, self.sauce, len(self.toppings), len(self.seasonings))
+
+
+class Order(TimestampBase):
+    # in a real setting, it is common to use phone number, email address for identification and contact, but here
+    # we simplify it by using a name
+    client = CharField(max_length=255)
+    pizza = ForeignKey(Pizza, null=True, on_delete=CASCADE)
+
+    def __str__(self):
+        return "{} by {}".format(self.pizza, self.client)

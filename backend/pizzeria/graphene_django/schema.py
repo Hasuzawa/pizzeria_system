@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from pizzeria.models.Pizza import Shape, Sauce, Topping, Seasoning
+from pizzeria.models.Pizza import Shape, Sauce, Topping, Seasoning, Pizza, Order
 
 
 class ShapeType(DjangoObjectType):
@@ -25,6 +25,18 @@ class SeasoningType(DjangoObjectType):
     class Meta:
         model = Seasoning
         fields = ("name",)
+
+
+class PizzaType(DjangoObjectType):
+    class Meta:
+        model = Pizza
+        fields = ("name", "price", "shape", "sauce", "toppings", "seasonings")
+
+
+class OrderType(DjangoObjectType):
+    class Meta:
+        model = Order
+        fields = ("client", "pizza")
 
 
 class Query(graphene.ObjectType):
