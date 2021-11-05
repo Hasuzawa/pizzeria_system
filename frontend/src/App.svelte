@@ -3,12 +3,20 @@
   import Footer from "./components/Footer.svelte"
   import Body from "./components/Body.svelte"
 
+  import { onMount } from "svelte"
+
   import { ApolloClient, InMemoryCache } from "@apollo/client/core"
   //import { setClient } from "svelte-apollo"
 
   import { createClient, initClient, setClient } from "@urql/svelte"
 
+  // import Cookies from "js-cookie"
+  // console.log(Cookies.get("csrftoken"))
+
   const backend_API: string = "http://127.0.0.1:8000/graphql"
+
+  let csrf_token = "";
+
 
   const client = createClient({
     url: backend_API
@@ -16,13 +24,6 @@
 
   setClient(client)
 
-  // const client = new ApolloClient({
-  //   uri: backend_API,
-  //   cache: new InMemoryCache(),
-  //   credentials: "include"
-  // });
-
-  // setClient(client);
 </script>
 
 

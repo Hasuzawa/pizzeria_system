@@ -1,12 +1,9 @@
 <script lang="ts">
-    //import { getClient, query } from "svelte-apollo"
-    //import { gql } from "@apollo/client/core"
-    //import GET_ALL_SHAPES from "../graphql/query.graphql"
-    import type { Shape } from "../types/type"
-
+    import type { AllShapes } from "../types/type"
     import { operationStore, query } from "@urql/svelte"
 
-    const shapeQuery = operationStore(`
+    // backtick `, not single quotation ' !
+    const shapeQuery = operationStore<AllShapes>(`
         query {
             allShapes {
                 name
@@ -16,22 +13,22 @@
 
     query(shapeQuery)
 
-    // backtick `, not single quotation ' !
-
-    // const client = getClient()
-
-    // const shapeQuery = client.query({query: GET_ALL_SHAPES});
-    // console.log(shapeQuery);
-    //console.log()
-    $: if (shapeQuery) console.log(shapeQuery)
+    $: if (shapeQuery) console.log(shapeQuery.data)
 
 </script>
 
 <div>
+
     <h1>Select Shape</h1>
-    <!-- {#each shapeQuery.data.allShapes as shape}
-        <span>{shape.name}</span>
-    {/each} -->
+    {#if $shapeQuery.fetching}
+        <span>loading</span>
+    {:else if $shapeQuery.error}
+        <span>data fetching failed</span>
+    {:else}
+        {#each $shapeQuery.data.allShapes as shape}
+            <span>{shape.name}</span>
+        {/each}
+    {/if}
 </div>
 
 <style lang="postcss">

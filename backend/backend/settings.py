@@ -34,9 +34,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "pizzeria",
     "graphene_django",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -128,3 +130,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GRAPHENE = {
     "SCHEMA": "pizzeria.graphene_django.schema.schema"
 }
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
+
+# beware this should only be used in dev, not in real production
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_HTTPONLY = False

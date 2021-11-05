@@ -7,6 +7,7 @@ specifiers:
   '@urql/svelte': ^1.3.2
   autoprefixer: ^10.4.0
   graphql: ^16.0.1
+  js-cookie: ^3.0.1
   postcss: ^8.3.11
   svelte: ^3.37.0
   svelte-apollo: ^0.4.0
@@ -22,6 +23,7 @@ dependencies:
   '@apollo/client': 3.4.16_graphql@16.0.1
   '@urql/svelte': 1.3.2_graphql@16.0.1+svelte@3.44.0
   graphql: 16.0.1
+  js-cookie: 3.0.1
   svelte-apollo: 0.4.0_750a374a9a4d158a80164d907701f8e6
   vite-plugin-graphql: 0.1.0_graphql@16.0.1+vite@2.6.13
 
@@ -882,6 +884,11 @@ packages:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
     dev: true
+
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: false
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
