@@ -18,13 +18,13 @@ class SauceType(DjangoObjectType):
 class ToppingType(DjangoObjectType):
     class Meta:
         model = Topping
-        fields = ("name",)
+        fields = ("name", "price")
 
 
 class SeasoningType(DjangoObjectType):
     class Meta:
         model = Seasoning
-        fields = ("name",)
+        fields = ("name", "price")
 
 
 class PizzaType(DjangoObjectType):

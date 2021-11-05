@@ -1,6 +1,8 @@
 <script lang="ts">
     import SelectShape from "./SelectShape.svelte"
     import SelectSauce from "./SelectSauce.svelte"
+    import SelectToppings from "./SelectToppings.svelte"
+    import SelectSeasonings from "./SelectSeasonings.svelte"
 </script>
 
 
@@ -9,7 +11,9 @@
         <h1>Choose your Pizza</h1>
         <SelectShape />
         <SelectSauce />
-    </div>
+        <SelectToppings />
+        <SelectSeasonings />
+    </div> 
 </div>
 
 

@@ -1,6 +1,7 @@
 <script lang="ts">
-    import type { AllShapes } from "../types/type"
+    import type { AllShapes } from "src/types/type"
     import { operationStore, query } from "@urql/svelte"
+    import Card from "./Card.svelte"
 
     // backtick `, not single quotation ' !
     const shapeQuery = operationStore<AllShapes>(`
@@ -13,21 +14,20 @@
 
     query(shapeQuery)
 
-    $: if (shapeQuery) console.log(shapeQuery.data)
-
 </script>
 
 <div>
-
-    <h1>Select Shape</h1>
+    <h1>Pick a Shape</h1>
     {#if $shapeQuery.fetching}
         <span>loading</span>
     {:else if $shapeQuery.error}
         <span>data fetching failed</span>
     {:else}
+        <div class="flex flex-row">
         {#each $shapeQuery.data.allShapes as shape}
-            <span>{shape.name}</span>
+            <Card name={shape.name} />
         {/each}
+        </div>
     {/if}
 </div>
 

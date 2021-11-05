@@ -26,11 +26,13 @@ class SauceAdmin(ModelAdmin):
 class ToppingAdmin(ModelAdmin):
     fields = ["name", "price", "date_created", "date_updated"]
     readonly_fields = ["date_created", "date_updated"]
+    list_display = ["name", "price"]
 
 
 class SeasoningAdmin(ModelAdmin):
     fields = ["name", "price", "date_created", "date_updated"]
     readonly_fields = ["date_created", "date_updated"]
+    list_display = ["name", "price"]
 
 
 class PizzaAdmin(ModelAdmin):
