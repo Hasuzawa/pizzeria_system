@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { AllShapes } from "src/types/type"
     import { operationStore, query } from "@urql/svelte"
-    import Card from "./Card.svelte"
+    import SingleCard from "./SingleCard.svelte"
 
     // backtick `, not single quotation ' !
     const shapeQuery = operationStore<AllShapes>(`
@@ -12,11 +12,11 @@
         }
     `)
 
-    query(shapeQuery)
+    query(shapeQuery);
 
 </script>
 
-<div>
+<div class="flex flex-col items-center">
     <h1>Pick a Shape</h1>
     {#if $shapeQuery.fetching}
         <span>loading</span>
@@ -25,7 +25,7 @@
     {:else}
         <div class="flex flex-row">
         {#each $shapeQuery.data.allShapes as shape}
-            <Card name={shape.name} />
+            <SingleCard name={shape.name} />
         {/each}
         </div>
     {/if}

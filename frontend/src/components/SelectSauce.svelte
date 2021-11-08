@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { AllSauces } from "src/types/type"
     import { operationStore, query } from "@urql/svelte"
-    import Card from "./Card.svelte"
+    import SingleCard from "./SingleCard.svelte"
 
     const sauceQuery = operationStore<AllSauces>(`
         query {
@@ -13,11 +13,9 @@
 
     query(sauceQuery);
 
-
-
 </script>
 
-<div>
+<div class="flex flex-col items-center">
     <h1>Select a sauce</h1>
     {#if $sauceQuery.fetching}
         <span>loading</span>
@@ -26,7 +24,7 @@
     {:else}
         <div class="flex flex-row">
         {#each $sauceQuery.data.allSauces as sauce}
-            <Card name={sauce.name} />
+            <SingleCard name={sauce.name} />
         {/each}
         </div>
 {/if}

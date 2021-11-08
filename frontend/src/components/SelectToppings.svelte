@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { AllToppings } from "src/types/type";
     import { operationStore, query } from "@urql/svelte"
-    import Card from "./Card.svelte"
+    import SingleCard from "./SingleCard.svelte"
 
     const toppingQuery = operationStore<AllToppings>(`
         query {
@@ -16,16 +16,16 @@
 
 </script>
 
-<div>
+<div class="flex flex-col items-center">
     <h1>Select your Toppings</h1>
     {#if $toppingQuery.fetching}
         <span>loading</span>
     {:else if $toppingQuery.error}
         <span>data fetching failed</span>
     {:else}
-        <div class="flex flex-row">
+        <div class="flex flex-row flex-wrap">
         {#each $toppingQuery.data.allToppings as topping}
-            <Card name={topping.name} />
+            <SingleCard name={topping.name} />
         {/each}
         </div>
     {/if}
