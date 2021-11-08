@@ -24,7 +24,7 @@
     {:else if $sauceQuery.error}
         <span>data fetching failed</span>
     {:else}
-        <div class="flex flex-row gap-x-4">
+        <div class="flex flex-row gap-x-4 mt-4 mb-2">
         {#each $sauceQuery.data.allSauces as sauce}
             <SingleCard name={sauce.name} writable={sauceWritable}/>
         {/each}

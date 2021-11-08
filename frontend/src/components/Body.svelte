@@ -8,7 +8,7 @@
 
 <div id="body" class="flex justify-center">
     <div id="bound" class="max-w-screen-lg flex flex-col items-center">
-        <h1>Choose your Pizza</h1>
+        <!-- <h1>Choose your Pizza</h1> -->
         <SelectShape />
         <SelectSauce />
         <!-- <SelectToppings /> -->
@@ -18,11 +18,14 @@
 
 
 <style lang="postcss">
+    h1 {
+
+        font-size: 30px;
+    }
     #body {
         background-color: #D13636;
     }
     #bound {
         flex: 1 1 0;
-        //background-color: lightblue;
     }
 </style>

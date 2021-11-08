@@ -18,6 +18,7 @@
 
 </script>
 
+
 <div class="flex flex-col items-center">
     <h1>Pick a Shape</h1>
     {#if $shapeQuery.fetching}
@@ -25,13 +26,14 @@
     {:else if $shapeQuery.error}
         <span>data fetching failed</span>
     {:else}
-        <div class="flex flex-row gap-x-4">
+        <div class="flex flex-row gap-x-4 mt-4 mb-2">
         {#each $shapeQuery.data.allShapes as shape}
             <SingleCard name={shape.name} writable={shapeWritable}/>
         {/each}
         </div>
     {/if}
 </div>
+
 
 <style lang="postcss">
     h1 {

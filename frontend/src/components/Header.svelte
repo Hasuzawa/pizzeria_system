@@ -1,16 +1,12 @@
-<script>
-    import { shape, sauce, toppings, seasonings } from "../stores/store"
+<script lang="ts">
+    import Cashier from "./Cashier.svelte"
 
 </script>
 
 <div id="header" class="flex justify-center justify-items-stretch">
-    <div id="bound" class="max-w-screen-lg h-12">
+    <div id="bound" class="max-w-screen-lg h-12 flex flex-row justify-between">
         <span>Pizzeria</span>
-        <span>Shape: {$shape}</span>
-        <span>Sauce: {$sauce}</span>
-        <span>{$toppings.length} Toppings</span>
-        <span>{$seasonings.length} Seasonings</span>
-        <span>Price: </span>
+        <Cashier />
     </div>
 </div>
 

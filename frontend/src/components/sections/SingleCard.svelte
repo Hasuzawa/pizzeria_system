@@ -3,6 +3,7 @@
 
     import Tick from "./Tick.svelte"
     import type { Writable } from "svelte/store"
+    import { fly } from "svelte/transition"
 
     export let name: string;
     export let price: number = 0;
@@ -50,6 +51,7 @@
     tabindex={0}
     class:hovered={hovered}
     class:focused={!hovered && focused}
+    in:fly={{y: 20}}
 >
     <div class="h-32">
 

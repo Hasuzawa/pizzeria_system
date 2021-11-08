@@ -9,7 +9,7 @@
     const fadeConfig: TransitionConfig = {
         duration: 300
     }
-    //d="M4 20.5L18.5 36.5L41.5 4" stroke="#FF0000" stroke-width="8" stroke-linecap="round"
+    
 </script>
 
 <svg
