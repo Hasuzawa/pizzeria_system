@@ -1,8 +1,8 @@
 <script lang="ts">
-    import SelectShape from "./SelectShape.svelte"
-    import SelectSauce from "./SelectSauce.svelte"
-    import SelectToppings from "./SelectToppings.svelte"
-    import SelectSeasonings from "./SelectSeasonings.svelte"
+    import SelectShape from "./sections/SelectShape.svelte"
+    import SelectSauce from "./sections/SelectSauce.svelte"
+    import SelectToppings from "./sections/SelectToppings.svelte"
+    import SelectSeasonings from "./sections/SelectSeasonings.svelte"
 </script>
 
 

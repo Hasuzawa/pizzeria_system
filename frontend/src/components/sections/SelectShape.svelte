@@ -3,7 +3,7 @@
     import { operationStore, query } from "@urql/svelte"
     import SingleCard from "./SingleCard.svelte"
 
-    import { shape as shapeWritable } from "../stores/store"
+    import { shape as shapeWritable } from "../../stores/store"
 
     // backtick `, not single quotation ' !
     const shapeQuery = operationStore<AllShapes>(`
@@ -25,7 +25,7 @@
     {:else if $shapeQuery.error}
         <span>data fetching failed</span>
     {:else}
-        <div class="flex flex-row">
+        <div class="flex flex-row gap-x-4">
         {#each $shapeQuery.data.allShapes as shape}
             <SingleCard name={shape.name} writable={shapeWritable}/>
         {/each}
@@ -34,5 +34,7 @@
 </div>
 
 <style lang="postcss">
-
+    h1 {
+        font-size: 30px;
+    }
 </style>

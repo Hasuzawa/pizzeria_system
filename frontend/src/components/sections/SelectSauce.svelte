@@ -3,7 +3,7 @@
     import { operationStore, query } from "@urql/svelte"
     import SingleCard from "./SingleCard.svelte"
 
-    import { sauce as sauceWritable} from "../stores/store"
+    import { sauce as sauceWritable} from "../../stores/store"
 
     const sauceQuery = operationStore<AllSauces>(`
         query {
@@ -24,7 +24,7 @@
     {:else if $sauceQuery.error}
         <span>data fetching failed</span>
     {:else}
-        <div class="flex flex-row">
+        <div class="flex flex-row gap-x-4">
         {#each $sauceQuery.data.allSauces as sauce}
             <SingleCard name={sauce.name} writable={sauceWritable}/>
         {/each}
@@ -33,5 +33,7 @@
 </div>
 
 <style lang="postcss">
-
+    h1 {
+        font-size: 30px;
+    }
 </style>
