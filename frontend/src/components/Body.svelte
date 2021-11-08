@@ -11,8 +11,8 @@
         <h1>Choose your Pizza</h1>
         <SelectShape />
         <SelectSauce />
-        <SelectToppings />
-        <SelectSeasonings />
+        <!-- <SelectToppings /> -->
+        <!-- <SelectSeasonings /> -->
     </div> 
 </div>
 

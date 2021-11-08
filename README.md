@@ -65,5 +65,8 @@ This account cannot modify anything, not even making an order.
             Installed URQL for Svelte and configured Vite. I am starting to think that GraphQL should not need to
             be manullay configured, considering how popular it is. Installed CORS for django for HTTP POST.
         </li>
+        <li>
+            With Tailwind, Svelte and raw CSS. There is many ways to animate DOM elements. Pseudo-class (:hover, :focus) is restricted because CSS is afterall not a programming language. Some framework-based animations are great, but no framework can ever do all what you want to do. I have found that the most versatile approach is to use JS to control CSS values and then apply the CSS by class. This approach offers the most flexibility and does not necessarily depend on any framework.
+        </li>
     </ul>
 </details>

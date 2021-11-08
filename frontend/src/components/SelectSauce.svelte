@@ -3,6 +3,8 @@
     import { operationStore, query } from "@urql/svelte"
     import SingleCard from "./SingleCard.svelte"
 
+    import { sauce as sauceWritable} from "../stores/store"
+
     const sauceQuery = operationStore<AllSauces>(`
         query {
             allSauces {
@@ -24,7 +26,7 @@
     {:else}
         <div class="flex flex-row">
         {#each $sauceQuery.data.allSauces as sauce}
-            <SingleCard name={sauce.name} />
+            <SingleCard name={sauce.name} writable={sauceWritable}/>
         {/each}
         </div>
 {/if}
