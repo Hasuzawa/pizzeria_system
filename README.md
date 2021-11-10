@@ -1,31 +1,30 @@
 ## About
-This is a simple single page application for ordering pizza online. This is not meant for production.
+This is a full stack svelte-django project for odering pizza online. The backend uses PostgreSQL as database. This is not meant for production, but it demonstrates how to set up a basic order app.
 
 
 ## Blueplan
+<details open>
 
-Frontend
-pnpm
-vite
-svelte
+| Frontend             |            |
+|----------------------|------------|
+| package manager      | pnpm       |
+| module manager       | vite       |
+| programming language | typescript |
+| web Framework        | Svelte     |
+| GraphQL              | urql       |
+| CSS                  | Tailwind   |
 
-Package manager
-frontend framework
-Bundler, build tool
+| Backend              |                 |
+|----------------------|-----------------|
+| framework            | django          |
+| programming language | python          |
+| database             | PostgreSQL      |
+| GraphQL              | graphene-django |
 
-
-
-Database
-Server, Backend
-
-
-Backend
-postgreSQL
-python
-django
-graphene-django
 (do note that "graphene" alone is a closely-related package. You need graphene-django to make a scheme and set up
 an API.)
+
+</details>
 
 ## UML
 A very simple UML model for pizza is provided. Essentially, for one pizza, you choose one shape, one sauce, some topping and some seasoning.
@@ -44,7 +43,7 @@ I have set up a read-only user so that you can login the admin page and have a l
 This account cannot modify anything, not even making an order.
 
 ## Technical commentary
-<details>
+<details open>
     <ul>
         <li>
             A database is meaningless for a singleton. But under Django framework, it is the easiest way to implment a site-wide setting that allows modifications.
@@ -67,6 +66,9 @@ This account cannot modify anything, not even making an order.
         </li>
         <li>
             With Tailwind, Svelte and raw CSS. There is many ways to animate DOM elements. Pseudo-class (:hover, :focus) is restricted because CSS is afterall not a programming language. Some framework-based animations are great, but no framework can ever do all what you want to do. I have found that the most versatile approach is to use JS to control CSS values and then apply the CSS by class. This approach offers the most flexibility and does not necessarily depend on any framework.
+        </li>
+        <li>
+            In the database, I have deliberately maintained some flexibility in fields by not enforcing non-negative integers. I am of the opinion that one should not assume more than what he knows. And in this case, I really do not know if there are situations price would be set to negative, for example as a promotion or discount. Therefore, I do not restrict price and some other fields to be >= 0.
         </li>
     </ul>
 </details>

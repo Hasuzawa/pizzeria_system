@@ -11,6 +11,7 @@ class TimestampBase(Model):
         abstract = True
 
 
+
 # this is based on https://evileg.com/en/post/576/
 
 # class SingletonModel(Model):

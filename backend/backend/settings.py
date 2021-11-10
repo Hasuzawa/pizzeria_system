@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "pizzeria",
     "graphene_django",
     "corsheaders",
+    "solo.apps.SoloAppConfig",
 ]
 
 MIDDLEWARE = [

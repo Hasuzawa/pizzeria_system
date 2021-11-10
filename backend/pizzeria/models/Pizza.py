@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import (Model, CharField, TextField, IntegerField, DateTimeField, ForeignKey, ManyToManyField,
-    SET_NULL)
+    SET_NULL, Count, BooleanField, F)
 from django.db.models.deletion import CASCADE, PROTECT
 from .Base import TimestampBase
 
@@ -16,12 +16,22 @@ class Shape(TimestampBase):
     def __str__(self):
         return self.name
 
+    def get_occurence(self) -> int:
+        return Pizza.objects.filter(shape__pk=self.pk).annotate(occurence=Count("pk")).count()
+    get_occurence.admin_order_field = "pk"
+    get_occurence.short_description = "ordered"
+
 
 class Sauce(TimestampBase):
     name = CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
+    def get_occurence(self) -> int:
+        return Pizza.objects.filter(sauce__pk=self.pk).annotate(occurence=Count("pk")).count()
+    get_occurence.admin_order_field = "pk"
+    get_occurence.short_description = "ordered"
 
 
 class Topping(TimestampBase):
@@ -52,7 +62,7 @@ class Pizza(TimestampBase):
 
     def __str__(self):
         return "{} {} pizza with {} topping and {} seasoning".format(
-            self.shape, self.sauce, len(self.toppings), len(self.seasonings))
+            self.shape, self.sauce, self.toppings.count(), self.seasonings.count())
 
 
 class Order(TimestampBase):
@@ -60,6 +70,7 @@ class Order(TimestampBase):
     # we simplify it by using a name
     client = CharField(max_length=255)
     pizza = ForeignKey(Pizza, null=True, on_delete=CASCADE)
+    completed = BooleanField(default=False)
 
     def __str__(self):
         return "{} by {}".format(self.pizza, self.client)

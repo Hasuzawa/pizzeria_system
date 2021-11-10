@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { AllSeasonings } from "src/types/type";
     import { operationStore, query } from "@urql/svelte"
-    import SingleCard from "./SingleCard.svelte"
+    import MultiCard from "./MultiCard.svelte"
 
     const seasoningQuery = operationStore<AllSeasonings>(`
         query {
@@ -25,7 +25,7 @@
     {:else}
         <div class="flex flex-row">
         {#each $seasoningQuery.data.allSeasonings as seasoning}
-            <SingleCard name={seasoning.name} />
+            <MultiCard name={seasoning.name} price={seasoning.price}/>
         {/each}
         </div>
     {/if}
