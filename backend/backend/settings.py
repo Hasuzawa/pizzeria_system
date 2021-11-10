@@ -140,3 +140,6 @@ CORS_ALLOWED_ORIGINS = [
 # beware this should only be used in dev, not in real production
 CSRF_USE_SESSIONS = False
 CSRF_COOKIE_HTTPONLY = False
+
+USE_TZ = True
+TIME_ZONE = "Japan"

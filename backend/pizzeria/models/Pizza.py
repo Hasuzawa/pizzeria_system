@@ -9,6 +9,8 @@ from .Base import TimestampBase
 # i.e. this is database-independent SQL
 # Here, each Model can be thought of as a table, and each field, a column in that table
 
+from .Pizzeria import Pizzeria
+
 
 class Shape(TimestampBase):
     name = CharField(max_length=255)
@@ -17,7 +19,8 @@ class Shape(TimestampBase):
         return self.name
 
     def get_occurence(self) -> int:
-        return Pizza.objects.filter(shape__pk=self.pk).annotate(occurence=Count("pk")).count()
+        #print(Pizzeria.objects.first().base_price)
+        return Pizza.objects.filter(shape__pk=self.pk).count()
     get_occurence.admin_order_field = "pk"
     get_occurence.short_description = "ordered"
 
@@ -29,7 +32,7 @@ class Sauce(TimestampBase):
         return self.name
 
     def get_occurence(self) -> int:
-        return Pizza.objects.filter(sauce__pk=self.pk).annotate(occurence=Count("pk")).count()
+        return Pizza.objects.filter(sauce__pk=self.pk).count()
     get_occurence.admin_order_field = "pk"
     get_occurence.short_description = "ordered"
 
@@ -37,6 +40,11 @@ class Sauce(TimestampBase):
 class Topping(TimestampBase):
     name = CharField(max_length=255)
     price = IntegerField()
+
+    def get_occurence(self) -> int:
+        return Pizza.objects.filter(toppings__pk=self.pk).count()   # count pizzas with this topping
+    get_occurence.admin_order_field = "pk"
+    get_occurence.short_description = "ordered"
 
     def __str__(self):
         return self.name
@@ -49,6 +57,11 @@ class Seasoning(TimestampBase):
     def __str__(self):
         return self.name
 
+    def get_occurence(self) -> int:
+        return Pizza.objects.filter(seasonings__pk=self.pk).count()
+    get_occurence.admin_order_field = "pk"
+    get_occurence.short_description = "ordered"
+
 
 class Pizza(TimestampBase):
     #name = CharField(max_length=255, null=True)
@@ -59,9 +72,8 @@ class Pizza(TimestampBase):
     toppings = ManyToManyField(Topping)
     seasonings = ManyToManyField(Seasoning)
 
-
     def __str__(self):
-        return "{} {} pizza with {} topping and {} seasoning".format(
+        return "{}, {}, {} topping, {} seasoning".format(
             self.shape, self.sauce, self.toppings.count(), self.seasonings.count())
 
 
