@@ -1,5 +1,6 @@
 <script lang="ts">
     type T = string;
+    type U = string;
 
     import Tick from "./Tick.svelte"
     import type { Writable } from "svelte/store"
@@ -8,25 +9,34 @@
     export let id: string;
     export let name: string;
     export let price: number = 0;
-    export let writable: Writable<T>;
+    export let writable_id: Writable<T>;
+    export let writable_name: Writable<U>;
+    
 
     let writable_value: T;
     
-    writable.subscribe((x: T) => {
+    writable_id.subscribe((x: T) => {
         writable_value = x
     })
 
-    function setWritable(x: T) {
-        writable.set(x);
+    function writeId(x: T) {
+        writable_id.set(x)
+    }
+    function writeName(x: U) {
+        writable_name.set(x)
+    }
+    const handleInteract = () => {
+        writeId(selected ? "" : id)
+        writeName(selected ? "" : name)
     }
 
     const handleClick = (e: MouseEvent) => {
-        setWritable(selected ? "" : id)
+        handleInteract()
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
         switch( e.key ){
-            case "Enter" : setWritable(selected ? "" : id); break;
+            case "Enter" : handleInteract(); break;
             default: break;
         }
     }

@@ -1,16 +1,16 @@
 import { writable } from "svelte/store"
 import type { Shape, Sauce, Topping, Seasoning } from "../types/type"
 
-export const shape_id = writable<string>("");
-export const shape_objects = writable<Shape[]>([]);
+export const shapeId = writable<string>("");
+export const shapeName = writable<string>("");
 
-export const sauce_id = writable<string>("");
-export const sauce_objects = writable<Sauce[]>([]);
+export const sauceId = writable<string>("");
+export const sauceName = writable<string>("");
 
-export const toppings_id = writable<string[]>([]);
-export const toppings_objects = writable<Topping[]>([]);
+export const toppingsId = writable<string[]>([]);
 
-export const seasonings_id = writable<string[]>([]);
-export const seasoning_objects = writable<Seasoning[]>([]);
+
+export const seasoningsId = writable<string[]>([]);
+
 
 //export const price = 0;

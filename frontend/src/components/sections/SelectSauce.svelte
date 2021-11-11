@@ -3,7 +3,7 @@
     import { operationStore, query } from "@urql/svelte"
     import SingleCard from "./SingleCard.svelte"
 
-    import { sauce_id, sauce_objects } from "../../stores/store"
+    import { sauceId, sauceName } from "../../stores/store"
 
     const sauceQuery = operationStore<AllSauces>(`
         query {
@@ -16,11 +16,6 @@
 
     query(sauceQuery);
 
-    $: if (sauceQuery.data) {
-        sauce_objects.set(sauceQuery.data.allSauces)
-        console.log($sauce_objects)
-    }
-
 </script>
 
 <div class="flex flex-col items-center">
@@ -32,7 +27,7 @@
     {:else}
         <div class="flex flex-row gap-x-4 mt-4 mb-2">
         {#each $sauceQuery.data.allSauces as sauce}
-            <SingleCard id={sauce.id} name={sauce.name} writable={sauce_id}/>
+            <SingleCard id={sauce.id} name={sauce.name} writable_id={sauceId} writable_name={sauceName}/>
         {/each}
         </div>
 {/if}

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { shape_id, sauce_id, toppings_id, seasonings_id } from "../stores/store"
+    import { shapeName, sauceName, toppingsId, seasoningsId } from "../stores/store"
     import { fly, fade, TransitionConfig } from "svelte/transition"
 
     let price: number = 0;
@@ -10,16 +10,6 @@
         duration: 300
     }
 
-    let shape: string;
-    let sauce: string;
-    let toppings: string[];
-    let seasonings: string[];
-
-    $: shape = "3"
-    $: sauce = "2"
-    $: toppings = ["2"]
-    $: seasonings = ["5"]
-
 </script>
 
 
@@ -27,33 +17,33 @@
     
     <div class="w-40 flex flex-row flex-nowrap">
         <span class="mr-2">Shape:</span>
-        {#key shape}
+        {#key $shapeName}
         <span class="truncate" in:fade={itemConfig} >
-            {shape}
+            {$shapeName}
         </span>
         {/key}
     </div>
     <div class="w-40 flex flex-row flex-nowrap">
         <span class="mr-2">Sauce:</span>
-        {#key sauce}
+        {#key $sauceName}
         <span class="truncate" in:fade={itemConfig} >
-            {sauce}
+            {$sauceName}
         </span>
         {/key}
     </div>
     <div class="w-32 flex flex-row flex-nowrap">
         <span class="mr-2">Toppings:</span>
-        {#key toppings}
+        {#key $toppingsId}
         <span class="truncate" in:fade={itemConfig} >
-            {toppings.length}
+            {$toppingsId.length}
         </span>
         {/key}
     </div>
     <div class="w-32 flex flex-row flex-nowrap">
         <span class="mr-2">Seasonings:</span>
-        {#key seasonings}
+        {#key $seasoningsId}
         <span class="truncate" in:fade={itemConfig} >
-            {seasonings.length}
+            {$seasoningsId.length}
         </span>
         {/key}
     </div>
