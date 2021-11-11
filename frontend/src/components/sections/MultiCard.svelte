@@ -1,4 +1,5 @@
 <script lang="ts">
+    export let id: string;
     export let name: string;
     export let price: number;
     export let minTopping: number = 0;

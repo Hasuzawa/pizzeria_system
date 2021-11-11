@@ -6,6 +6,7 @@
     const seasoningQuery = operationStore<AllSeasonings>(`
         query {
             allSeasonings {
+                id
                 price
                 name
             }
@@ -25,7 +26,11 @@
     {:else}
         <div class="flex flex-row">
         {#each $seasoningQuery.data.allSeasonings as seasoning}
-            <MultiCard name={seasoning.name} price={seasoning.price}/>
+            <MultiCard
+                id={seasoning.id}
+                name={seasoning.name}
+                price={seasoning.price}
+            />
         {/each}
         </div>
     {/if}

@@ -6,6 +6,7 @@
     const toppingQuery = operationStore<AllToppings>(`
         query {
             allToppings {
+                id
                 price
                 name
             }
@@ -28,9 +29,9 @@
         <div class="flex flex-row flex-wrap">
         {#each $toppingQuery.data.allToppings as topping}
             <MultiCard
+                id={topping.id}
                 name={topping.name}
                 price={topping.price}
-
             />
         {/each}
         </div>

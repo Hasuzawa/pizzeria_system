@@ -5,6 +5,7 @@
     import type { Writable } from "svelte/store"
     import { fly } from "svelte/transition"
 
+    export let id: string;
     export let name: string;
     export let price: number = 0;
     export let writable: Writable<T>;
@@ -20,12 +21,12 @@
     }
 
     const handleClick = (e: MouseEvent) => {
-        setWritable(selected ? "" : name)
+        setWritable(selected ? "" : id)
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
         switch( e.key ){
-            case "Enter" : setWritable(selected ? "" : name); break;
+            case "Enter" : setWritable(selected ? "" : id); break;
             default: break;
         }
     }
@@ -34,7 +35,7 @@
     let focused: boolean = false;
     let selected: boolean = false;
 
-    $: selected = (name === writable_value);
+    $: selected = (id === writable_value);
 
 </script>
 
@@ -69,7 +70,7 @@
 <style lang="postcss">
     #single-card{
         top: 0;
-
+        outline: none;
         transition: top ease-in-out 0.15s;
     }
     #single-card.hovered{
