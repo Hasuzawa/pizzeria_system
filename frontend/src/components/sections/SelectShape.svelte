@@ -30,7 +30,7 @@
     {:else}
         <div class="flex flex-row gap-x-4 mt-4 mb-2">
         {#each $shapeQuery.data.allShapes as shape}
-            <SingleCard id={shape.id} name={shape.name} writable_id={shapeId} writable_name={shapeName}/>
+            <SingleCard id={shape.id} name={shape.name} writableId={shapeId} writableName={shapeName}/>
         {/each}
         </div>
     {/if}

@@ -27,7 +27,7 @@
     {:else}
         <div class="flex flex-row gap-x-4 mt-4 mb-2">
         {#each $sauceQuery.data.allSauces as sauce}
-            <SingleCard id={sauce.id} name={sauce.name} writable_id={sauceId} writable_name={sauceName}/>
+            <SingleCard id={sauce.id} name={sauce.name} writableId={sauceId} writableName={sauceName}/>
         {/each}
         </div>
 {/if}

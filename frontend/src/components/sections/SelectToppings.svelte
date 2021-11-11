@@ -3,6 +3,8 @@
     import { operationStore, query } from "@urql/svelte"
     import MultiCard from "./MultiCard.svelte"
 
+    import { toppingsId } from "../../stores/store"
+
     const toppingQuery = operationStore<AllToppings>(`
         query {
             allToppings {
@@ -32,6 +34,7 @@
                 id={topping.id}
                 name={topping.name}
                 price={topping.price}
+                writableId={toppingsId}
             />
         {/each}
         </div>
