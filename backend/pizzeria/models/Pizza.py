@@ -63,8 +63,19 @@ class Seasoning(TimestampBase):
     get_occurence.short_description = "ordered"
 
 
+class Order(TimestampBase):
+    # in a real setting, it is common to use phone number, email address for identification and contact, but here
+    # we simplify it by using a name
+    client = CharField(max_length=255)
+    completed = BooleanField(default=False)
+
+    def __str__(self):
+        return self.client
+
+
 class Pizza(TimestampBase):
-    #price = IntegerField(help_text="The price is calculated at creation time. Changing prices in database will only affect future pizza prices")
+    order = ForeignKey(Order, on_delete=PROTECT)
+    price = IntegerField(help_text="The price is calculated at creation time. Changing prices in database will only affect future pizza prices")
     shape = ForeignKey(Shape, null=True, on_delete=PROTECT)
     sauce = ForeignKey(Sauce, null=True, on_delete=PROTECT)
     toppings = ManyToManyField(Topping)
@@ -73,14 +84,3 @@ class Pizza(TimestampBase):
     def __str__(self):
         return "{}, {}, {} topping, {} seasoning".format(
             self.shape, self.sauce, self.toppings.count(), self.seasonings.count())
-
-
-class Order(TimestampBase):
-    # in a real setting, it is common to use phone number, email address for identification and contact, but here
-    # we simplify it by using a name
-    client = CharField(max_length=255)
-    pizza = ForeignKey(Pizza, null=True, on_delete=CASCADE)
-    completed = BooleanField(default=False)
-
-    def __str__(self):
-        return "{} by {}".format(self.pizza, self.client)

@@ -6,12 +6,8 @@ from django.db.utils import ProgrammingError
 
 from solo.admin import SingletonModelAdmin
 
-# class TimestampAdmin(ModelBase):
-#     fields = ["date_created", "date_updated"]
-#     readonly_fields = ["date_created", "date_updated"]
-
-#     class Meta:
-#         abstract = True
+from .forms import PizzaForm
+from django.forms import ModelChoiceField, Select
 
 
 class ShapeAdmin(ModelAdmin):
@@ -42,23 +38,35 @@ class SeasoningAdmin(ModelAdmin):
 
 
 class PizzaAdmin(ModelAdmin):
-    fields = ["shape", "sauce", "toppings", "seasonings", "date_created", "date_updated"]
-    readonly_fields = ["date_created", "date_updated"]
-    list_display = ["__str__", "shape", "sauce", "date_created", "date_updated"]
-    list_filter = ["shape", "sauce"]
+    # fields = ["order", "shape", "sauce", "toppings", "seasonings", "price", "date_created", "date_updated"]
+    # readonly_fields = ["date_created", "date_updated", "price"]
+    # list_display = ["order", "shape", "sauce", "price", "date_created", "date_updated"]
+    # list_filter = ["shape", "sauce"]
+    # search_fields = ["order"]
+    # formfield_overrides = {
+    #     ModelChoiceField: {
+    #         "widget": Select(
+    #             attrs={
+    #                 "style": "width: 160px;"
+    #             }
+    #         )
+    #     }
+    # }
+    form = PizzaForm
 
 
 class PizzaInline(TabularInline):
     model = Pizza
+    extra = 1
     
 
 class OrderAdmin(ModelAdmin):
-    fields = ["client", "pizza", "completed", "date_created", "date_updated"]
+    fields = ["client", "completed", "date_created", "date_updated"]
     readonly_fields = ["date_created", "date_updated"]
-    list_display = ["client", "pizza", "completed", "date_created", "date_updated"]
+    list_display = ["client", "completed", "date_created", "date_updated"]
     list_filter = ["completed"]
     search_fields = ["client"]
-    #inlines = [PizzaInline]
+    inlines = [PizzaInline]
 
 
 class PizzeriaAdmin(SingletonModelAdmin):

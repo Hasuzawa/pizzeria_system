@@ -70,5 +70,11 @@ Note that the timezone is set to Japan. So if you just made an order, the time w
         <li>
             In the database, I have deliberately maintained some flexibility in fields by not enforcing non-negative integers. I am of the opinion that one should not assume more than what he knows. And in this case, I really do not know if there are situations price would be set to negative, for example as a promotion or discount. Therefore, I do not restrict price and some other fields to be >= 0.
         </li>
+        <li>
+            In Django, a ForeignKey can model a "has a" or "belong to" relation. It is essentially a mant-to-one relation, unless you specify unique.
+        </li>
+        <li>
+            Django has many layers of abstraction to separate concerns. The model is controls the database and acts as the source of truth. The form and view are responsible for the form, i.e. the what and how data can be changed. It is the MVC model. Do note that you don't need to use form and view if you intend to use a frontend framework to handle everything.
+        </li>
     </ul>
 </details>
