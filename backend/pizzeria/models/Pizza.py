@@ -64,9 +64,7 @@ class Seasoning(TimestampBase):
 
 
 class Pizza(TimestampBase):
-    #name = CharField(max_length=255, null=True)
-    #price = IntegerField()
-
+    #price = IntegerField(help_text="The price is calculated at creation time. Changing prices in database will only affect future pizza prices")
     shape = ForeignKey(Shape, null=True, on_delete=PROTECT)
     sauce = ForeignKey(Sauce, null=True, on_delete=PROTECT)
     toppings = ManyToManyField(Topping)

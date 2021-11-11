@@ -1,6 +1,5 @@
 ## About
-This is a full stack svelte-django project for odering pizza online. The backend uses PostgreSQL as database. This is not meant for production, but it demonstrates how to set up a basic order app.
-
+This is a full stack svelte-django project for odering pizza online. The backend uses PostgreSQL as database. This is not meant for production, but it demonstrates how to set up a basic order app. The admin page has statistics on how many times each ingredient has been ordered. In a real setting, the data can be further processed for market analysis.
 
 ## Blueplan
 <details open>
@@ -41,6 +40,7 @@ I have set up a read-only user so that you can login the admin page and have a l
 | view_client | enter_pizzeria |
 
 This account cannot modify anything, not even making an order.
+Note that the timezone is set to Japan. So if you just made an order, the time will likely be different from your local time.
 
 ## Technical commentary
 <details open>

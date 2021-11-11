@@ -1,4 +1,4 @@
-from django.contrib.admin import ModelAdmin, site
+from django.contrib.admin import ModelAdmin, site, StackedInline, TabularInline
 from django.db.models.base import ModelBase
 from .models import Shape, Sauce, Topping, Seasoning, Pizza, Order, Pizzeria
 
@@ -31,6 +31,7 @@ class ToppingAdmin(ModelAdmin):
     readonly_fields = ["date_created", "date_updated", "get_occurence"]
     list_display = ["name", "price", "get_occurence", "date_created", "date_updated"]
     list_filter = ["price"]
+    search_fields = ["name"]
 
 
 class SeasoningAdmin(ModelAdmin):
@@ -44,6 +45,11 @@ class PizzaAdmin(ModelAdmin):
     fields = ["shape", "sauce", "toppings", "seasonings", "date_created", "date_updated"]
     readonly_fields = ["date_created", "date_updated"]
     list_display = ["__str__", "shape", "sauce", "date_created", "date_updated"]
+    list_filter = ["shape", "sauce"]
+
+
+class PizzaInline(TabularInline):
+    model = Pizza
     
 
 class OrderAdmin(ModelAdmin):
@@ -51,6 +57,8 @@ class OrderAdmin(ModelAdmin):
     readonly_fields = ["date_created", "date_updated"]
     list_display = ["client", "pizza", "completed", "date_created", "date_updated"]
     list_filter = ["completed"]
+    search_fields = ["client"]
+    #inlines = [PizzaInline]
 
 
 class PizzeriaAdmin(SingletonModelAdmin):

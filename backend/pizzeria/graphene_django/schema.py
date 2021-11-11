@@ -1,45 +1,33 @@
 import graphene
 from graphene import Mutation, String, Field, Mutation, ObjectType, ID, List
 from graphene_django import DjangoObjectType
-from pizzeria.models.Pizza import Shape, Sauce, Topping, Seasoning, Pizza, Order
+from pizzeria.models.Pizza import Shape, Sauce, Topping, Seasoning, Pizza, Order, Pizzeria
 from pizzeria.models.Pizzeria import Pizzeria
+
 
 
 class ShapeType(DjangoObjectType):
     class Meta:
         model = Shape
-        fields = ("name",)
+        fields = ("id", "name")
 
 
 class SauceType(DjangoObjectType):
     class Meta:
         model = Sauce
-        fields = ("name",)
-
-# class SauceMutation(Mutation):
-#     class Arguments:
-#         name = String(required=True)
-
-#     sauce = Field(SauceType)
-
-#     @classmethod
-#     def mutate(cls, root, info, name: str):
-#         sauce = Sauce(name=name)
-#         sauce.save()
-
-#         return SauceMutation(sauce)
+        fields = ("id", "name")
 
 
 class ToppingType(DjangoObjectType):
     class Meta:
         model = Topping
-        fields = ("name", "price")
+        fields = ("id", "name", "price")
 
 
 class SeasoningType(DjangoObjectType):
     class Meta:
         model = Seasoning
-        fields = ("name", "price")
+        fields = ("id", "name", "price")
 
 
 class PizzaType(DjangoObjectType):
@@ -72,17 +60,21 @@ class OrderType(DjangoObjectType):
 class OrderMutation(Mutation):
     class Arguments:
         client = String(required=True)      # input fields for mutation
-
         shape = ID(required=True)
         sauce = ID(required=True)
         toppings = List(ID, required=True)
         seasonings = List(ID, required=True)
 
     order = Field(OrderType)            # subfield that can be queried after mutation
-    pizza = Field(PizzaType)
 
     @classmethod
     def mutate(cls, root, info, client, shape: ID, sauce: ID, toppings, seasonings):      # operations after receiving the inputs
+        
+        base_price = Pizzeria.base_price
+        min_topping = Pizzeria.min_topping
+        max_topping = Pizzeria.max_topping
+        min_seasoning = Pizzeria.min_seasoning
+        max_seasoning = Pizzeria.max_seasoning
 
         pizza = Pizza()
         pizza.shape_id = shape
@@ -90,7 +82,7 @@ class OrderMutation(Mutation):
 
         pizza.save()        # you need to save for an id (its pk) to be generated, which is required for setting
                             # many to many fields
-
+        
         toppings_list = Topping.objects.filter(pk__in=toppings)
         pizza.toppings.set(toppings_list)
 
@@ -99,7 +91,12 @@ class OrderMutation(Mutation):
 
         pizza.save()
 
-        return OrderMutation(pizza)
+        order = Order()
+        order.client = client
+        order.pizza_id = pizza.id
+        order.save()
+
+        return OrderMutation(order)
 
 
 class PizzeriaType(DjangoObjectType):
