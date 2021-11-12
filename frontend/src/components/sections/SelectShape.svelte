@@ -21,7 +21,7 @@
 </script>
 
 
-<div class="flex flex-col items-center">
+<div class="w-full flex flex-col items-center">
     <h1>Pick a Shape</h1>
     {#if $shapeQuery.fetching}
         <span>loading</span>

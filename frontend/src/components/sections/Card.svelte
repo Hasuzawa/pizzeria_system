@@ -1,6 +1,7 @@
 <script lang="ts">
     import Tick from "./Tick.svelte"
     import { fly } from "svelte/transition"
+    import type { CheckboxMode } from "../../types/type"
 
     export let handleClick
     export let handleKeyDown
@@ -8,6 +9,8 @@
     export let name: string;
     export let price: number;
     export let selected: boolean;
+
+    export let checkboxMode: CheckboxMode;
 
 
     let hovered: boolean = false;
@@ -37,7 +40,10 @@
         {#if price != 0}
         <price>${price}</price>
         {/if}
-        <Tick ticked={selected}></Tick>
+        <Tick
+            ticked={selected}
+            {checkboxMode}
+        />
     </div>
 </div>
 

@@ -18,7 +18,7 @@
 
 </script>
 
-<div class="flex flex-col items-center">
+<div class="w-full flex flex-col items-center">
     <h1>Select a sauce</h1>
     {#if $sauceQuery.fetching}
         <span>loading</span>

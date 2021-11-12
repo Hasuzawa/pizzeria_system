@@ -11,5 +11,5 @@ export const toppingsId = writable<string[]>([]);
 
 export const seasoningsId = writable<string[]>([]);
 
-
+export const clientName = writable<string>("");
 //export const price = 0;

@@ -21,20 +21,20 @@
 </script>
 
 
-<div class="flex flex-col items-center">
+<div class="w-full flex flex-col items-center">
     <h1>Select your Toppings</h1>
     {#if $toppingQuery.fetching}
         <span>loading</span>
     {:else if $toppingQuery.error}
         <span>data fetching failed</span>
     {:else}
-        <div class="flex flex-row flex-wrap">
+        <div class="flex flex-row flex-wrap justify-center gap-x-4 gap-y-6 mt-4 mb-2">
         {#each $toppingQuery.data.allToppings as topping}
             <MultiCard
                 id={topping.id}
                 name={topping.name}
                 price={topping.price}
-                writableId={toppingsId}
+                writableIds={toppingsId}
             />
         {/each}
         </div>

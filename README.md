@@ -39,7 +39,7 @@ I have set up a read-only user so that you can login the admin page and have a l
 |-------------|----------------|
 | view_client | enter_pizzeria |
 
-This account cannot modify anything, not even making an order.
+This account cannot modify anything, not even make an order.
 Note that the timezone is set to Japan. So if you just made an order, the time will likely be different from your local time.
 
 ## Technical commentary

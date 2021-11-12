@@ -3,16 +3,20 @@
     import SelectSauce from "./sections/SelectSauce.svelte"
     import SelectToppings from "./sections/SelectToppings.svelte"
     import SelectSeasonings from "./sections/SelectSeasonings.svelte"
+    import NameInput from "./sections/NameInput.svelte"
+    import Send from "./sections/Send.svelte"
 </script>
 
 
 <div id="body" class="flex justify-center">
-    <div id="bound" class="max-w-screen-lg flex flex-col items-center">
+    <div id="bound" class="max-w-screen-lg flex flex-col items-center gap-y-8">
         <!-- <h1>Choose your Pizza</h1> -->
         <SelectShape />
         <SelectSauce />
-        <!-- <SelectToppings /> -->
-        <!-- <SelectSeasonings /> -->
+        <SelectToppings />
+        <SelectSeasonings />
+        <NameInput />
+        <Send />
     </div> 
 </div>
 

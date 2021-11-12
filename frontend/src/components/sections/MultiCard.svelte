@@ -6,21 +6,32 @@
     export let id: string;
     export let name: string;
     export let price: number;
-    export let writableId: Writable<String[]>;
+    export let writableIds: Writable<String[]>;
 
-    export let minTopping: number = 0;
-    export let maxTopping: number = 10;
+    //export let minTopping: number = 0;
+    //export let maxTopping: number = 10;
 
-    let selectedIds: string[] = [];
+    let selected: boolean;
+
+    //let selectedIds: string[] = [];
+
+    $: selected = $writableIds.includes(id);
 
 
-
-    const handleClick = () => {
-
-    }
 
     const handleInteract = () => {
+        if (selected) {
+            console.log("already selected")
+            console.log($writableIds)
+            $writableIds = $writableIds.filter(x => x != id);
+            console.log("after filter", $writableIds)
+        } else {
+            $writableIds = [...$writableIds, id]
+        }
+    }
 
+    const handleClick = (e: MouseEvent) => {
+        handleInteract();
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -34,3 +45,11 @@
 </script>
 
 
+<Card
+    {handleClick}
+    {handleKeyDown}
+    {name}
+    {price}
+    {selected}
+    checkboxMode="square"
+/>

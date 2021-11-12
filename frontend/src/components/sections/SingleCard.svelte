@@ -10,13 +10,6 @@
     export let price: number = 0;
     export let writableId: Writable<T>;
     export let writableName: Writable<U>;
-    
-
-    // let writable_value: T;
-    
-    // writable_id.subscribe((x: T) => {
-    //     //writable_value = x
-    // })
 
     function writeId(x: T) {
         writableId.set(x)
@@ -52,4 +45,5 @@
     {name}
     {price}
     {selected}
+    checkboxMode="round"
 />
