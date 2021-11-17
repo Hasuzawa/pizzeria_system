@@ -22,7 +22,7 @@
 
 
 <div class="w-full flex flex-col items-center">
-    <h1>Select your Toppings</h1>
+    <h1>Your favorite toppings</h1>
     {#if $toppingQuery.fetching}
         <span>loading</span>
     {:else if $toppingQuery.error}

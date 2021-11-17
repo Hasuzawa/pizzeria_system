@@ -21,10 +21,7 @@
 
     const handleInteract = () => {
         if (selected) {
-            console.log("already selected")
-            console.log($writableIds)
             $writableIds = $writableIds.filter(x => x != id);
-            console.log("after filter", $writableIds)
         } else {
             $writableIds = [...$writableIds, id]
         }

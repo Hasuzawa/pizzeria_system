@@ -20,7 +20,7 @@
 </script>
 
 <div class="w-full flex flex-col items-center">
-    <h1>Select your Seasonings</h1>
+    <h1>Better taste with seasonings</h1>
     {#if $seasoningQuery.fetching}
         <span>loading</span>
     {:else if $seasoningQuery.error}

@@ -4,7 +4,7 @@
     import SelectToppings from "./sections/SelectToppings.svelte"
     import SelectSeasonings from "./sections/SelectSeasonings.svelte"
     import NameInput from "./sections/NameInput.svelte"
-    import Send from "./sections/Send.svelte"
+    import Order from "./sections/Order.svelte"
 </script>
 
 
@@ -16,7 +16,7 @@
         <SelectToppings />
         <SelectSeasonings />
         <NameInput />
-        <Send />
+        <Order />
     </div> 
 </div>
 

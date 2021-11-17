@@ -40,9 +40,9 @@ class SeasoningAdmin(ModelAdmin):
 class PizzaAdmin(ModelAdmin):
     # fields = ["order", "shape", "sauce", "toppings", "seasonings", "price", "date_created", "date_updated"]
     # readonly_fields = ["date_created", "date_updated", "price"]
-    # list_display = ["order", "shape", "sauce", "price", "date_created", "date_updated"]
-    # list_filter = ["shape", "sauce"]
-    # search_fields = ["order"]
+    list_display = ["order", "shape", "sauce", "price", "date_created", "date_updated"]
+    list_filter = ["shape", "sauce"]
+    search_fields = ["order"]
     # formfield_overrides = {
     #     ModelChoiceField: {
     #         "widget": Select(

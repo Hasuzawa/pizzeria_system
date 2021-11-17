@@ -33,5 +33,13 @@ interface AllSeasonings {
 
 type CheckboxMode = "round" | "square";
 
-export type { Shape, Sauce, Topping, Seasoning, CheckboxMode }
+
+interface OrderArgs {
+    shapeId: string
+    sauceId: string
+    toppingsId: string[]
+    seasoningsId: string[]
+}
+
+export type { Shape, Sauce, Topping, Seasoning, CheckboxMode, OrderArgs }
 export type { AllShapes, AllSauces, AllToppings, AllSeasonings }
